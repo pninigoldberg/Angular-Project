@@ -1,0 +1,21 @@
+<div class="lesson-card">
+
+  <h2>{{ lesson.name }}</h2>
+
+  <p><b>מורה:</b> {{ lesson.teacher }}</p>
+
+  <p><b>מפגשים:</b> {{ lesson.meetings }}</p>
+
+  <p><b>תאריך התחלה:</b> {{ lesson.startDate }}</p>
+
+  <p><b>מחיר:</b> {{ lesson.price }}</p>
+
+  <p><b>יום:</b> {{ lesson.day }}</p>
+
+  <p><b>שעה:</b> {{ lesson.hour }}</p>
+
+  <p *ngIf="lesson.started" class="started-text">
+    🔴 שיעור שכבר התחיל
+  </p>
+
+</div>

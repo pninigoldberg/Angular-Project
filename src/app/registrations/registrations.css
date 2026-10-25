@@ -1,0 +1,325 @@
+/* Registrations Page Styles */
+
+.registrations-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.registrations-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.registrations-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #4CAF50, #2196F3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+}
+
+.registrations-subtitle {
+  color: #666;
+  font-size: 1.1rem;
+  margin-bottom: 0;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.stat-card {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.stat-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  font-size: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.stat-icon.users {
+  background: linear-gradient(135deg, #4CAF50, #66BB6A);
+  color: white;
+}
+
+.stat-icon.lessons {
+  background: linear-gradient(135deg, #2196F3, #42A5F5);
+  color: white;
+}
+
+.stat-icon.revenue {
+  background: linear-gradient(135deg, #FF9800, #FFB74D);
+  color: white;
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  color: #666;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.table-container {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.table-header {
+  background: linear-gradient(135deg, #4CAF50, #66BB6A);
+  color: white;
+  padding: 1.5rem 2rem;
+  border-radius: 16px 16px 0 0;
+}
+
+.table-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.table-subtitle {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  margin: 0.5rem 0 0 0;
+}
+
+/* Ag-Grid Custom Styling */
+.ag-theme-alpine {
+  font-family: 'Poppins', sans-serif !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.ag-theme-alpine .ag-header {
+  background: linear-gradient(135deg, #4CAF50, #81C784) !important;
+  color: white !important;
+  font-weight: 600 !important;
+  font-size: 0.9rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  border: none !important;
+}
+
+.ag-theme-alpine .ag-header-cell {
+  border-right: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.ag-theme-alpine .ag-header-cell:last-child {
+  border-right: none !important;
+}
+
+.ag-theme-alpine .ag-header-cell-text {
+  font-weight: 600 !important;
+  color: white !important;
+}
+
+.ag-theme-alpine .ag-row {
+  transition: all 0.2s ease !important;
+  border-bottom: 1px solid #f0f0f0 !important;
+}
+
+.ag-theme-alpine .ag-row:hover {
+  background-color: rgba(76, 175, 80, 0.05) !important;
+}
+
+.ag-theme-alpine .ag-row:nth-child(even) {
+  background-color: rgba(76, 175, 80, 0.02) !important;
+}
+
+.ag-theme-alpine .ag-cell {
+  padding: 1rem !important;
+  border-right: 1px solid #f0f0f0 !important;
+  font-size: 0.9rem !important;
+}
+
+.ag-theme-alpine .ag-cell:last-child {
+  border-right: none !important;
+}
+
+/* Status badges */
+.status-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-paid {
+  background: linear-gradient(135deg, #4CAF50, #66BB6A);
+  color: white;
+}
+
+.status-unpaid {
+  background: linear-gradient(135deg, #FF9800, #FFB74D);
+  color: white;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .registrations-container {
+    padding: 1rem;
+  }
+
+  .registrations-title {
+    font-size: 2rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .stat-card {
+    padding: 1.5rem;
+  }
+
+  .stat-number {
+    font-size: 2rem;
+  }
+
+  .table-container {
+    border-radius: 12px;
+  }
+
+  .table-header {
+    padding: 1rem 1.5rem;
+  }
+
+  .ag-theme-alpine .ag-cell {
+    padding: 0.75rem !important;
+    font-size: 0.8rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .registrations-title {
+    font-size: 1.5rem;
+  }
+
+  .table-title {
+    font-size: 1.2rem;
+  }
+}
+
+/* Modal styles for registrations component */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modal-content {
+  width: min(100%, 520px);
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 1.75rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  animation: modalFadeIn 0.25s ease-out;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.modal-content input,
+.modal-content label {
+  display: block;
+  width: 100%;
+  margin-bottom: 0.85rem;
+}
+
+.modal-content input {
+  padding: 0.85rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  font-size: 1rem;
+}
+
+.modal-content label {
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.modal-content button {
+  margin-top: 0.75rem;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Loading animation */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #4CAF50;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

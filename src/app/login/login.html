@@ -1,0 +1,44 @@
+<div class="login-container">
+  <div class="fitness-icon"></div>
+
+  <div class="login-card">
+    <div class="login-header">
+      <h1 class="login-title">סטודיו להתעמלות</h1>
+      <p class="login-subtitle">ברוכים הבאים למערכת הניהול</p>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="login()" class="login-form">
+      <div class="form-group">
+        <label class="form-label" for="username">שם משתמש</label>
+        <input
+          id="username"
+          type="text"
+          formControlName="username"
+          class="form-input"
+          placeholder="הכנס שם משתמש"
+          required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="password">סיסמה</label>
+        <input
+          id="password"
+          type="password"
+          formControlName="password"
+          class="form-input"
+          placeholder="הכנס סיסמה"
+          required>
+      </div>
+
+      <button type="submit" class="login-btn">
+        התחברות למערכת
+      </button>
+    </form>
+
+    <div class="login-footer">
+      <p><strong>משתמשים לדוגמה:</strong></p>
+      <p>מורה: teacher1 / 123</p>
+      <p>מזכירה: secretary1 / 123</p>
+    </div>
+  </div>
+</div>

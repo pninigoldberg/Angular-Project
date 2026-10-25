@@ -1,0 +1,23 @@
+<div class="lessons-container">
+  <!-- Header Section -->
+  <div class="lessons-header">
+    <h1 class="lessons-title">שיעורי הסטודיו</h1>
+    <p class="lessons-subtitle">גלה את מגוון השיעורים והקורסים שלנו</p>
+  </div>
+
+  <!-- Gallery of Lessons -->
+  <div class="lessons-gallery">
+    <app-lesson-details
+      *ngFor="let lesson of lessonsService.lessons"
+      [lesson]="lesson"
+      [ngClass]="{ started: lesson.started }">
+    </app-lesson-details>
+  </div>
+
+  <!-- Empty State (if no lessons) -->
+  <div *ngIf="lessonsService.lessons.length === 0" class="empty-state">
+    <div class="empty-state-icon">🏋️‍♀️</div>
+    <h2 class="empty-state-title">אין שיעורים זמינים</h2>
+    <p class="empty-state-text">כרגע אין שיעורים מתוכננים. חזור מאוחר יותר!</p>
+  </div>
+</div>

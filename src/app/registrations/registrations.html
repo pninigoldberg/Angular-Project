@@ -1,0 +1,144 @@
+<div class="registrations-container">
+  <!-- Header Section -->
+  <div class="registrations-header">
+    <h1 class="registrations-title">ניהול נרשמות</h1>
+    <p class="registrations-subtitle">צפה וניהל את כל הנרשמות לקורסי הסטודיו</p>
+  </div>
+
+  <!-- Statistics Cards -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-icon users">👥</div>
+      <div class="stat-number">{{ filteredData.length }}</div>
+      <div class="stat-label">סה"כ נרשמות</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon lessons">📚</div>
+      <div class="stat-number">{{ uniqueLessonsCount }}</div>
+      <div class="stat-label">סוגי קורסים</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon revenue">💰</div>
+      <div class="stat-number">{{ filteredData.filter(item => item.paid).length }}</div>
+      <div class="stat-label">תשלומים שבוצעו</div>
+    </div>
+  </div>
+
+  <!-- Action Buttons -->
+  <div style="margin-bottom: 2rem; text-align: center;">
+    <button mat-raised-button color="primary" (click)="openAdd()" class="btn btn-primary">
+      ➕ נרשמת חדשה
+    </button>
+  </div>
+
+  <!-- Success Message -->
+  <p *ngIf="successMessage" class="success-message" style="color: #4CAF50; font-weight: bold; text-align: center; margin-bottom: 2rem; padding: 1rem; background: rgba(76, 175, 80, 0.1); border-radius: 12px; border: 1px solid rgba(76, 175, 80, 0.2);">
+    {{ successMessage }}
+  </p>
+
+  <!-- Filters Section -->
+  <div class="card" style="margin-bottom: 2rem;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; padding: 1.5rem;">
+      <mat-form-field appearance="outline">
+        <mat-label>חיפוש שם</mat-label>
+        <input matInput [(ngModel)]="filterText" placeholder="הכנס שם לחיפוש">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>שיעור</mat-label>
+        <select matNativeControl [(ngModel)]="selectedLesson">
+          <option value="">הכל</option>
+          <option value="Yoga">Yoga</option>
+          <option value="Pilates">Pilates</option>
+        </select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>תשלום</mat-label>
+        <select matNativeControl [(ngModel)]="paidFilter">
+          <option value="">הכל</option>
+          <option value="paid">שולם</option>
+          <option value="unpaid">לא שולם</option>
+        </select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <!-- Table Section -->
+  <div class="table-container">
+    <div class="table-header">
+      <h2 class="table-title">רשימת הנרשמות</h2>
+      <p class="table-subtitle">כל הפרטים על הנרשמים והתשלומים</p>
+    </div>
+
+    <ag-grid-angular
+      class="ag-theme-alpine"
+      style="width: 100%; height: 600px;"
+      [rowData]="filteredData"
+      [columnDefs]="columnDefs"
+      [defaultColDef]="defaultColDef"
+      (cellClicked)="onCellClicked($event)">
+    </ag-grid-angular>
+  </div>
+</div>
+
+<!-- חלון פרטים -->
+<div *ngIf="selectedRegistration" class="modal">
+
+  <div class="modal-content">
+
+    <h2>פרטי נרשמת</h2>
+
+    <p>שם: {{ selectedRegistration.firstName }}</p>
+    <p>משפחה: {{ selectedRegistration.lastName }}</p>
+    <p>טלפון: {{ selectedRegistration.phone }}</p>
+    <p>ת"ז: {{ selectedRegistration.id }}</p>
+    <p>שיעור: {{ selectedRegistration.lesson }}</p>
+    <p>מחיר: {{ selectedRegistration.price }}</p>
+    <p>שולם: {{ selectedRegistration.paid ? 'כן' : 'לא' }}</p>
+
+    <button mat-raised-button color="warn" (click)="selectedRegistration = null">
+      סגור
+    </button>
+
+  </div>
+
+</div>
+<div *ngIf="rowData.length === 0">
+  אין נרשמות להצגה
+</div>
+
+<div *ngIf="isAddOpen" class="modal">
+
+  <div class="modal-content">
+
+    <h2>נרשמת חדשה</h2>
+
+    <input placeholder="שם" [(ngModel)]="newReg.firstName">
+    <input placeholder="משפחה" [(ngModel)]="newReg.lastName">
+    <input placeholder="טלפון" [(ngModel)]="newReg.phone">
+    <input placeholder="ת״ז" [(ngModel)]="newReg.id">
+
+    <input placeholder="שיעור" [(ngModel)]="newReg.lesson">
+    <input type="number" placeholder="מחיר" [(ngModel)]="newReg.price">
+
+    <label>
+      <input type="checkbox" [(ngModel)]="newReg.paid">
+      שולם
+    </label>
+
+    <br><br>
+
+    <button mat-raised-button color="primary" (click)="addRegistration()">
+      שמור
+    </button>
+
+    <button mat-button (click)="closeAdd()">
+      ביטול
+    </button>
+
+  </div>
+
+</div>

@@ -1,0 +1,201 @@
+// Include theming for Angular Material with the current theming API.
+// Learn more about theming and how to use it for your application's
+// custom components at https://material.angular.dev/guide/theming
+@use '@angular/material' as mat;
+@use '@angular/material/core/m2' as m2;
+
+// Custom color palettes for gymnastics studio
+$gymnastics-primary: (
+  50: #e8f5e8,
+  100: #c8e6c9,
+  200: #a5d6a7,
+  300: #81c784,
+  400: #66bb6a,
+  500: #4caf50,
+  600: #43a047,
+  700: #388e3c,
+  800: #2e7d32,
+  900: #1b5e20,
+  A100: #b9f6ca,
+  A200: #69f0ae,
+  A400: #00e676,
+  A700: #00c853,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: rgba(black, 0.87),
+    A200: rgba(black, 0.87),
+    A400: rgba(black, 0.87),
+    A700: white,
+  )
+);
+
+$gymnastics-accent: (
+  50: #fff3e0,
+  100: #ffe0b2,
+  200: #ffcc80,
+  300: #ffb74d,
+  400: #ffa726,
+  500: #ff9800,
+  600: #fb8c00,
+  700: #f57c00,
+  800: #ef6c00,
+  900: #e65100,
+  A100: #ffd180,
+  A200: #ffab40,
+  A400: #ff9100,
+  A700: #ff6d00,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: rgba(black, 0.87),
+    600: rgba(black, 0.87),
+    700: white,
+    800: white,
+    900: white,
+    A100: rgba(black, 0.87),
+    A200: rgba(black, 0.87),
+    A400: rgba(black, 0.87),
+    A700: white,
+  )
+);
+
+$gymnastics-warn: (
+  50: #ffebee,
+  100: #ffcdd2,
+  200: #ef9a9a,
+  300: #e57373,
+  400: #ef5350,
+  500: #f44336,
+  600: #e53935,
+  700: #d32f2f,
+  800: #c62828,
+  900: #b71c1c,
+  A100: #ff8a80,
+  A200: #ff5252,
+  A400: #ff1744,
+  A700: #d50000,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: rgba(black, 0.87),
+    A200: white,
+    A400: white,
+    A700: white,
+  )
+);
+
+$gymnastics-theme: m2.define-light-theme(
+  m2.define-palette($gymnastics-primary),
+  m2.define-palette($gymnastics-accent),
+  m2.define-palette($gymnastics-warn)
+);
+
+@include mat.all-component-bases($gymnastics-theme);
+@include mat.all-component-themes($gymnastics-theme);
+
+html {
+  height: 100%;
+}
+
+body {
+  // Default the application to a light color theme. This can be changed to
+  // `dark` to enable the dark color theme, or to `light dark` to defer to the
+  // user's system settings.
+  color-scheme: light;
+
+  // Set a default background, font and text colors for the application using
+  // Angular Material's system-level CSS variables. Learn more about these
+  // variables at https://material.angular.dev/guide/system-variables
+  background-color: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+  font: var(--mat-sys-body-medium);
+
+  // Reset the user agent margin.
+  margin: 0;
+  height: 100%;
+}
+
+// Custom Material component overrides for gymnastics studio theme
+.mat-mdc-button {
+  border-radius: 12px !important;
+  font-weight: 500 !important;
+  text-transform: none !important;
+  transition: all 0.3s ease !important;
+}
+
+.mat-mdc-button:hover {
+  transform: translateY(-1px) !important;
+}
+
+.mat-mdc-card {
+  border-radius: 16px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+  transition: all 0.3s ease !important;
+}
+
+.mat-mdc-card:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12) !important;
+  transform: translateY(-2px) !important;
+}
+
+.mat-mdc-text-field {
+  border-radius: 12px !important;
+}
+
+.mat-mdc-text-field .mdc-text-field__input {
+  border-radius: 12px !important;
+}
+
+.mat-mdc-form-field {
+  font-family: 'Poppins', sans-serif !important;
+}
+
+// Ag-Grid custom styling to match the theme
+.ag-theme-alpine {
+  font-family: 'Poppins', sans-serif !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+}
+
+.ag-theme-alpine .ag-header {
+  background: linear-gradient(135deg, #4CAF50, #81C784) !important;
+  color: white !important;
+  font-weight: 600 !important;
+  border-radius: 12px 12px 0 0 !important;
+}
+
+.ag-theme-alpine .ag-header-cell-text {
+  font-weight: 600 !important;
+}
+
+.ag-theme-alpine .ag-row {
+  transition: all 0.2s ease !important;
+}
+
+.ag-theme-alpine .ag-row:hover {
+  background-color: rgba(76, 175, 80, 0.05) !important;
+}
+
+.ag-theme-alpine .ag-row:nth-child(even) {
+  background-color: rgba(76, 175, 80, 0.02) !important;
+}
